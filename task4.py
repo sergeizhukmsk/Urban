@@ -5,27 +5,9 @@
 # В них вам понадобится команда int() и остаточное деление на 10.
 
 # 4th program
-
-# Вариант № 1
-# Исходная строка
 input_string = '123.456'
-
-# Преобразование строки в число
-number = float(input_string)
-
-# Умножение числа на 10, чтобы переместить десятичную точку
-multiplied_number = number  *  10
-
-# Приведение числа к целому типу данных
-integer_part = int(multiplied_number)
-
-# Получение первой цифры после запятой
+number_1 = float(input_string)
+number_2 = number_1 * 10
+integer_part = int(number_2)
 result = integer_part % 10
-
-# Вывод результата
 print(result)
-
-# Вариант № 2
-s = '123.456'
-result = int(float(s) * 10) % 10
-print(result)  # Вывод: 4
