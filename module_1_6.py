@@ -3,6 +3,7 @@
 # Выведите на экран словарь my_dict.
 # Выведите на экран одно значение по существующему ключу,
 # одно по отсутствующему из словаря my_dict без ошибки.
+from typing import Set, Any
 
 # Добавьте ещё две произвольные пары того же формата в словарь my_dict.
 # Удалите одну из пар в словаре по существующему ключу из словаря my_dict
@@ -22,15 +23,18 @@ print(my_dict['galina'])
 my_dict['boris'] = 1939
 print(my_dict)
 
-my_dict = {'sergei':1962,'galina':1956,'kata':1985,'tamara':1939,'boris':1939,'nikola':1935}
+my_dict.update({'boris':1939,'nikola':1935})
 print(my_dict)
-del my_dict['boris']
+print(my_dict.get('anton'))
+a = my_dict.pop('boris')
+print(a)
 print(my_dict)
 
 my_set = {1,2,3,4,5,1,2,3,4}
 print(my_set)
-my_set = {1,2,3,4,5,1,2,3,4,'galina','boris'}
+my_set.add('galina')
+my_set.add('boris')
 print(my_set)
-my_set.remove('boris')
+my_set.discard('boris')
 print(my_set)
 
