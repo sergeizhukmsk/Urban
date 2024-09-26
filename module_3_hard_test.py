@@ -6,19 +6,11 @@ data_structure = [
     ((), [{(2, 'Urban', ('Urban2', 35))}])
 ]
 
-# list1, dict1, tuple1, str1, tuple2 = data_structure
-#
-# print('list1 = ', list1)  # [1, 2, 3]
-# print('dict1 = ', dict1)  # {'a': 4, 'b': 5}
-# print('tuple1 = ', tuple1)  # (6, {'cube': 7, 'drum': 8})
-# print('str1 = ', str1)  # "Hello"
-# print('tuple2 = ', tuple2)  # ((), [{(2, 'Urban', ('Urban2', 35))}]
+def calculate_structure_sum(structure, nums=0, strings=0):
 
+    print(structure)
 
-def calculate_structure_sum(*args):
-    print(*args)
-
-    for item in data_structure:
+    for item in structure:
 
         print('item = ', item)
 
@@ -32,7 +24,6 @@ def calculate_structure_sum(*args):
             print("String: ", item)
 
 
-
-
-result = calculate_structure_sum(data_structure)
+#result = calculate_structure_sum(data_structure)
+result = len(data_structure)
 print(result)
