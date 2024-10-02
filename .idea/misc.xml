@@ -3,5 +3,7 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.12 (Urban)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.12" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_22" project-jdk-name="Python 3.12" project-jdk-type="Python SDK">
+    <output url="file://$USER_HOME$/AppData/Local/Programs/Python/Python312/python.exe" />
+  </component>
 </project>
