@@ -44,26 +44,30 @@ class UrTube:
 
     def add(self, *videos):
         for video in videos:
-            if not any(other_video.title == video.title for other_video in self.videos):
+            if not any(other_video.title.lower() == video.title.lower() for other_video in self.videos):
                 self.videos.append(video)
 
     def get_videos(self, search_word):
-        matching_titles = [video.title for video in self.videos if search_word in video.title]
+        matching_titles = [video.title for video in self.videos if search_word.lower() in video.title.lower()]
         return matching_titles
 
     def watch_video(self, title):
         if self.current_user is None:
             print("Войдите в аккаунт, чтобы смотреть видео")
+
         elif any(video.title == title for video in self.videos):
             found_video = next((video for video in self.videos if video.title == title), None)
+
             if found_video.adult_mode and self.current_user.age < 18:
                 print("Вам нет 18 лет, пожалуйста покиньте страницу")
             else:
                 import time
                 for i in range(found_video.duration):
-                    print(i + 1)
+                    #print(i + 1)
+                    print(f"Время просмотра: {i + 1} в секундах.")
                     time.sleep(1)
                 print("Конец видео")
+
         else:
             print("Видео не найдено")
 

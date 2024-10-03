@@ -6,7 +6,12 @@ class User:
     def __init__(self, nickname, password, age):
         self.nickname = nickname
         self.password = hashlib.sha1(password.encode ()).hexdigest()
+        # self.password = hash(password)  # Хэш пароля
         self.age = age
+
+
+    def __repr__(self):
+        return f"User({self.nickname}, {self.password}, {self.age})"
 
 
 class Video:
@@ -17,11 +22,16 @@ class Video:
         self.adult_mode = adult_mode
 
 
+    def __repr__(self):
+        return f"Video({self.title}, {self.duration}, {self.adult_mode})"
+
+
 class UrTube:
     def __init__(self):
         self.users = []
         self.videos = []
         self.current_user = None
+
 
     def log_in(self, nickname, password):
         for user in self.users:
@@ -29,6 +39,7 @@ class UrTube:
                 self.current_user = user
                 return
         print("Неверное имя пользователя или пароль")
+
 
     def register(self, nickname, password, age):
         for user in self.users:
@@ -39,17 +50,21 @@ class UrTube:
         self.users.append(new_user)
         self.current_user = new_user
 
+
     def log_out(self):
         self.current_user = None
 
+
     def add(self, *videos):
         for video in videos:
-            if not any(v.title.lower () == video.title.lower () for v in self.videos):
+            if not any(v.title.lower() == video.title.lower() for v in self.videos):
                 self.videos.append(video)
+
 
     def get_videos(self, search_word):
         result = [video.title for video in self.videos if search_word.lower() in video.title.lower()]
         return result
+
 
     def watch_video(self, video_title):
         if not self.current_user:
@@ -70,12 +85,12 @@ class UrTube:
             print("Вам нет 18 лет, пожалуйста покиньте страницу")
             return
 
-        print(f"Воспроизведение видео: {found_video.title}")
+        print(f"Просмотр видео: {found_video.title}")
 
         while found_video.time_now < found_video.duration:
             time.sleep(1)
             found_video.time_now += 1
-            print(f"Текущая секунда воспроизведения: {found_video.time_now}")
+            print(f"Время просмотра: {found_video.time_now} в секундах.")
 
         found_video.time_now = 0
         print("Конец видео")
