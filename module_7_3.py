@@ -1,5 +1,7 @@
 # Модуль № 7 Домашнее задание № 3
 
+import string
+
 class WordsFinder:
     def __init__(self, *files):
         self.file_names = files
@@ -8,10 +10,13 @@ class WordsFinder:
         all_words = {}
         for filename in self.file_names:
             with open(filename, 'r', encoding='utf-8') as file:
-                content = file.read().lower().replace(',', '').replace('.', '').replace('=', '').replace('!',
-                                                                                                       '').replace('?', '').replace(':', '').replace(';', '').replace(' - ', '')
-                words = content.split()
-                all_words[filename] = words
+                file.seek(0)
+                stroka = file.read()
+                punctuation_chars = string.punctuation  # Набор символов !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+                for punctuation in punctuation_chars:
+                    stroka = stroka.replace(punctuation, ' ')
+                    words = stroka.split()
+                    all_words[filename] = words
         return all_words
 
     def find(self, word):
