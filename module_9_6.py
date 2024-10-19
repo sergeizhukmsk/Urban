@@ -1,19 +1,21 @@
 # Модуль №9 Домашнее задание 6
 
 def all_variants(text):
-    n = len(text)
-    for i in range(2**n):
-        subsequence = ''
-        for j in range(n):
-            if i // (2 ** j) % 2 == 1:
-                subsequence += text[j]
+    if not isinstance(text, str):
+        raise TypeError('Аргумент должен быть строкой')
 
-        yield subsequence
+    n = len(text)
+
+    for length in range(1, n + 1):
+        for start in range(n - length + 1):
+            end = start + length
+            subsequence = text[start:end]
+            yield subsequence
 
 
 # Пример использования функции
-stroka = all_variants("abc")
-for i in stroka:
+a = all_variants("abc")
+for i in a:
     print(i)
 
 
